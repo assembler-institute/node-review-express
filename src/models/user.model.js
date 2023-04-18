@@ -1,20 +1,26 @@
-const {Schema, model} = require("mongoose")
+const { Schema, model } = require('mongoose')
 
 const UserSchema = new Schema({
-    name: {
-        type: String,
-        required: [true, "Please provide a name"],
-    },
-    password: {
-        type:String,
-        required: [true, "Please provide a password"],
-    },
-    email:{
-        type: String,
-        required: [true, "Please provide an email"],
+  name: {
+    type: String,
+    required: [true, 'Please provide a name']
+  },
+  email: {
+    type: String,
+    required: [true, 'Please provide an email']
+  },
+  picture: {
+    type: String,
+    required: [true, 'Please provide an picture']
+  },
+  todo: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Todo'
     }
+  ]
 })
 
-const UserModel = model("User", UserSchema)
+const UserModel = model('User', UserSchema)
 
 module.exports = UserModel
